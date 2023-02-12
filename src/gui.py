@@ -9,7 +9,9 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         self.pushButton.clicked.connect(self.calculate)
     
     def calculate(self):
-        self.lineEdit_3.setText(self.lineEdit_2.text())
+        spin_box_val = self.spinBox.value()
+        lineEdit_2_value = int(self.lineEdit_2.text())
+        self.lineEdit_3.setText(str(spin_box_val + lineEdit_2_value))
 
 if __name__ == "__main__":
     app = QtWidgets.QApplication(sys.argv)

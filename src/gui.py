@@ -1,5 +1,5 @@
 import sys
-from PyQt6 import QtWidgets, uic
+from PySide2 import QtWidgets
 from MainWindow import Ui_MainWindow
 
 class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
@@ -15,4 +15,4 @@ if __name__ == "__main__":
     app = QtWidgets.QApplication(sys.argv)
     window = MainWindow()
     window.show()
-    app.exec()    
+    app.exec_()    

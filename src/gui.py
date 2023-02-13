@@ -11,7 +11,13 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
     def calculate(self):
         spin_box_val = self.spinBox.value()
         lineEdit_2_value = int(self.lineEdit_2.text())
-        self.lineEdit_3.setText(str(spin_box_val + lineEdit_2_value))
+
+        if self.radioButton_plus.isChecked():
+            output_val = spin_box_val + lineEdit_2_value
+        if self.radioButton_minus.isChecked():
+            output_val = spin_box_val - lineEdit_2_value
+
+        self.lineEdit_3.setText(str(output_val))
 
 if __name__ == "__main__":
     app = QtWidgets.QApplication(sys.argv)

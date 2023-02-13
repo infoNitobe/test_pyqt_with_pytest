@@ -16,8 +16,19 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
             output_val = spin_box_val + lineEdit_2_value
         if self.radioButton_minus.isChecked():
             output_val = spin_box_val - lineEdit_2_value
+        if self.checkBox.isChecked():
+            self.labelWindow = LabelWindow(output_val)
+            self.labelWindow.show()
 
         self.lineEdit_3.setText(str(output_val))
+
+class LabelWindow(QtWidgets.QWidget):
+    def __init__(self, output_val):
+        super().__init__()
+        layout = QtWidgets.QVBoxLayout()
+        self.label = QtWidgets.QLabel(str(output_val))
+        layout.addWidget(self.label)
+        self.setLayout(layout)
 
 if __name__ == "__main__":
     app = QtWidgets.QApplication(sys.argv)

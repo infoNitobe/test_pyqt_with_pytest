@@ -1,1 +1,2 @@
-import gui
+#from .gui import *
+#from .MainWindow import *

@@ -5,7 +5,12 @@ build-backend = "hatchling.build"
 [project]
 name = "tpyside"
 version = "1.0.0"
-dependencies = [""]
+dependencies = [
+    "pyside2"
+]
 
-[tool.hatch.build]
-exclude = [""]
+[project.optional-dependencies]
+tests = [
+    "pytest",
+]
+

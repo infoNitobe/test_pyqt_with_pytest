@@ -1,10 +1,11 @@
 import sys
 from PySide2 import QtWidgets
-from MainWindow import Ui_MainWindow
+#import tpyside.MainWindow
+from tpyside import MainWindow
 
-class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
+class MainWindow2(QtWidgets.QMainWindow, MainWindow.Ui_MainWindow):
     def __init__(self, *args, obj = None, **kwargs):
-        super(MainWindow, self).__init__(*args, **kwargs)
+        super(MainWindow2, self).__init__(*args, **kwargs)
         self.setupUi(self)
         self.pushButton.clicked.connect(self.calculate)
     
@@ -32,6 +33,6 @@ class LabelWindow(QtWidgets.QWidget):
 
 if __name__ == "__main__":
     app = QtWidgets.QApplication(sys.argv)
-    window = MainWindow()
+    window = MainWindow2()
     window.show()
     app.exec_()    

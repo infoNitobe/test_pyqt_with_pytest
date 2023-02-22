@@ -1,6 +1,5 @@
 import sys
 from PySide2 import QtWidgets
-#import tpyside.gui
 from tpyside import gui
 
 if __name__ == "__main__":

@@ -1,12 +1,11 @@
 import sys
 from PySide2 import QtWidgets
-#from tpyside import MainWindow2
-import tpyside
+from tpyside import gui
 
 def test_button():
     app = QtWidgets.QApplication(sys.argv)
-    window = tpyside.Mainwindow2()
+    window = gui.MainWindow2()
     window.show()
-    app.exec_()    
+    app.exec_()
 
 test_button()

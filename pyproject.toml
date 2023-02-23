@@ -8,3 +8,9 @@ version = "1.0.0"
 dependencies = [
     "pyside2"
 ]
+
+[project.optional-dependencies]
+tests = [
+    "pytest",
+]
+

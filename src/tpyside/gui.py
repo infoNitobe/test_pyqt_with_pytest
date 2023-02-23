@@ -6,6 +6,8 @@ from tpyside import MainWindow
 class MainWindow2(QtWidgets.QMainWindow, MainWindow.Ui_MainWindow):
     def __init__(self, *args, obj = None, **kwargs):
         super(MainWindow2, self).__init__(*args, **kwargs)
+        self.output_val = 0
+
         self.setupUi(self)
         self.pushButton.clicked.connect(self.calculate)
     
@@ -14,14 +16,14 @@ class MainWindow2(QtWidgets.QMainWindow, MainWindow.Ui_MainWindow):
         lineEdit_2_value = int(self.lineEdit_2.text())
 
         if self.radioButton_plus.isChecked():
-            output_val = spin_box_val + lineEdit_2_value
+            self.output_val = spin_box_val + lineEdit_2_value
         if self.radioButton_minus.isChecked():
-            output_val = spin_box_val - lineEdit_2_value
+            self.output_val = spin_box_val - lineEdit_2_value
         if self.checkBox.isChecked():
-            self.labelWindow = LabelWindow(output_val)
+            self.labelWindow = LabelWindow(self.output_val)
             self.labelWindow.show()
 
-        self.lineEdit_3.setText(str(output_val))
+        self.lineEdit_3.setText(str(self.output_val))
 
 class LabelWindow(QtWidgets.QWidget):
     def __init__(self, output_val):

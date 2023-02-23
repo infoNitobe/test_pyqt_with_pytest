@@ -1,24 +1,41 @@
 import sys
+import pytest
 from PySide2 import QtWidgets
 from PySide2 import QtTest
 from PySide2 import QtCore
 from tpyside import gui
 
-def test_button():
-    app = QtWidgets.QApplication(sys.argv)
-    window = gui.MainWindow2()
-    window.show()
+class TestGui:
+    @pytest.fixture(scope="class")
+    def setup(self):
+        self.__class__.app = QtWidgets.QApplication(sys.argv)
+        self.__class__.window = gui.MainWindow2()
+        self.window.show()
 
-    for i in range(1, 10000):
-        window.lineEdit_2.setText(str(i))
-        window.radioButton_plus.toggle()
+    def test_radioButotn_plus(self, setup):
+        self.window.radioButton_plus.toggle()
 
-        output_before_calc = window.output_val
-        QtTest.QTest.mouseClick(window.pushButton, QtCore.Qt.LeftButton)
-        output_after_calc = window.output_val
-        assert output_before_calc != output_after_calc
-        #assert output_after_calc != 5000
+        for i in range(-100, 101):
+            for j in range(100):
+                self.window.lineEdit_2.setText(str(i))
+                self.window.spinBox.setValue(j)
+                QtTest.QTest.mouseClick(self.window.pushButton, QtCore.Qt.LeftButton)
 
-    app.exec_()
+                expected_result = self.window.spinBox.value() + int(self.window.lineEdit_2.text())
+
+                assert int(self.window.lineEdit_3.text()) == expected_result
+
+    def test_radioButotn_minus(self, setup):
+        self.window.radioButton_minus.toggle()
+
+        for i in range(-100, 101):
+            for j in range(100):
+                self.window.lineEdit_2.setText(str(i))
+                self.window.spinBox.setValue(j)
+                QtTest.QTest.mouseClick(self.window.pushButton, QtCore.Qt.LeftButton)
+
+                expected_result = self.window.spinBox.value() - int(self.window.lineEdit_2.text())
+
+                assert int(self.window.lineEdit_3.text()) == expected_result
 
 #test_button()

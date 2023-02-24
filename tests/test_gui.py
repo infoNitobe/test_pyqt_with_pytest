@@ -11,6 +11,7 @@ class TestGui:
         TestGui.window = gui.MainWindow2()
         TestGui.window.show()
         #TestGui.app.exec_()
+
     def test_radioButotn_plus(self, setup):
         TestGui.window.radioButton_plus.toggle()
         for i in range(-100, 101):
@@ -20,6 +21,7 @@ class TestGui:
                 QtTest.QTest.mouseClick(TestGui.window.pushButton, QtCore.Qt.LeftButton)
                 expected_result = TestGui.window.spinBox.value() + int(TestGui.window.lineEdit_2.text())
                 assert int(TestGui.window.lineEdit_3.text()) == expected_result
+
     def test_radioButotn_minus(self, setup):
         TestGui.window.radioButton_minus.toggle()
         for i in range(-100, 101):
@@ -29,4 +31,17 @@ class TestGui:
                 QtTest.QTest.mouseClick(TestGui.window.pushButton, QtCore.Qt.LeftButton)
                 expected_result = TestGui.window.spinBox.value() - int(TestGui.window.lineEdit_2.text())
                 assert int(TestGui.window.lineEdit_3.text()) == expected_result
+    
+    def test_label_window(self, setup):
+        TestGui.window.checkBox.toggle()
+        TestGui.window.radioButton_plus.toggle()
+        for i in range(-10, 11):
+            for j in range(10):
+                TestGui.window.lineEdit_2.setText(str(i))
+                TestGui.window.spinBox.setValue(j)
+                QtTest.QTest.mouseClick(TestGui.window.pushButton, QtCore.Qt.LeftButton)
+                expected_result = TestGui.window.spinBox.value() + int(TestGui.window.lineEdit_2.text())
+                result_label_window = int(TestGui.window.labelWindow.label.text())
+                assert result_label_window == expected_result
+
 #test_button()

@@ -39,9 +39,3 @@ class LabelWindow(QtWidgets.QWidget):
         self.label = QtWidgets.QLabel(str(output_val))
         layout.addWidget(self.label)
         self.setLayout(layout)
-
-if __name__ == "__main__":
-    app = QtWidgets.QApplication(sys.argv)
-    window = MainWindow2()
-    window.show()
-    app.exec_()    

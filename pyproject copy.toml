@@ -1,0 +1,17 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "tpyside"
+version = "1.0.0"
+dependencies = [
+    "PySide2",
+    "pyqt6",
+]
+
+[project.optional-dependencies]
+tests = [
+    "pytest",
+]
+

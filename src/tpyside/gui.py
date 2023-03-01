@@ -8,14 +8,14 @@ class MainWindow2(QtWidgets.QMainWindow, MainWindow.Ui_MainWindow):
         self.setupUi(self)
         #memo:Make it an instance variable for use from the test module
         self.output_val = 0
-        self.pushButton.clicked.connect(self._process_pushed)
+        self.pushButton.clicked.connect(self.__process_pushed)
  
-    def _process_pushed(self):
-        self._calculate()
-        self._output_to_dialog()
-        self._update_operation_result()
+    def __process_pushed(self):
+        self.__calculate()
+        self.__output_to_dialog()
+        self.__update_operation_result()
     
-    def _calculate(self):
+    def __calculate(self):
         spin_box_val = self.spinBox.value()
         lineEdit_2_value = int(self.lineEdit_2.text())
 
@@ -24,12 +24,12 @@ class MainWindow2(QtWidgets.QMainWindow, MainWindow.Ui_MainWindow):
         elif self.radioButton_minus.isChecked():
             self.output_val = spin_box_val - lineEdit_2_value
    
-    def _output_to_dialog(self):
+    def __output_to_dialog(self):
         if self.checkBox.isChecked():
             self.labelWindow = LabelWindow(self.output_val)
             self.labelWindow.show()
     
-    def _update_operation_result(self):
+    def __update_operation_result(self):
         self.lineEdit_3.setText(str(self.output_val))
 
 class LabelWindow(QtWidgets.QWidget):
